@@ -1,5 +1,12 @@
 # DevOps Labs
 
+![CI Python](https://github.com/Kamila-Khamidullina/devops/actions/workflows/python_docker.yml/badge.svg)
+![Markdown Lint](https://github.com/Kamila-Khamidullina/devops/actions/workflows/markdown.yml/badge.svg)
+![Python Check](https://github.com/Kamila-Khamidullina/devops/actions/workflows/python.yml/badge.svg)
+![JavaScript Check](https://github.com/Kamila-Khamidullina/devops/actions/workflows/java.yml/badge.svg)
+![JavaScript Linter](https://github.com/Kamila-Khamidullina/devops/actions/workflows/java_lint.yml/badge.svg)
+![Snyk](https://github.com/Kamila-Khamidullina/devops/actions/workflows/snyk.yml/badge.svg)
+
 ## About
 
 This is a python web application on flask framework.
@@ -15,6 +22,8 @@ It shows current Moscow time in browser.
   - [Docker](#docker)
     - [Build with local image](#build-with-local-image)
     - [Building from image on DockerHub](#building-from-image-on-dockerhub)
+  - [Unit tests](#unit-tests)
+  - [Git Actions CI](#git-actions-ci)
   - [Contacts](#contacts)
 
 ## Build
@@ -29,10 +38,12 @@ Before using the application you need to install:
 
 To run the application you need to:
 
-1. Clone the repository and go to it
+1. Clone the repository, intall requirements and go to
+   the repository
 
 ```bash
 git clone https://github.com/Kamila-Khamidullina/devops
+pip install -r requirements.txt
 cd devops/app_python
 ```
 
@@ -99,6 +110,37 @@ docker run --publish 5000:5000 kamilakhamidullina/devops_lab2
 ![run](/assets/docker_run_pull.jpg)
 
 The app will open at <http://localhost:5000/>.
+
+## Unit tests
+
+The app is covered with unit tests.
+After getting the application in your local device
+and installing requirements.txt
+you can test the app using
+
+```bash
+coverage run tests/__init__.py
+```
+
+![run tests](/assets/run_tests.jpg)
+
+To see the coverage report run
+
+```bash
+coverage report app.py
+```
+
+![report](/assets/report.jpg)
+
+## Git Actions CI
+
+This app is integrated with github actions.
+
+- markdown.yml - used to lint check the md files
+- python.yml - installs dependencies for python projects,
+  lint checks it with flake8, builds it and runs unit tests.
+- python_docker.yml - logins to the docker,
+  builds the image and pushes it.
 
 ## Contacts
 
